@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css" type="text/css"/>
+    <link rel="stylesheet" href="/default.css" type="text/css"/>
+    <title>Users</title>
+</head>
+
+<header>
+    <h1>Home page</h1>
+</header>
+<main>
+
+    <a  href="/users/login"><button class="login" th:if="${sessionCheck.getAttribute('username')} == null">Login</button></a>
+    <a  href="/users" ><button class="register" th:if="${sessionCheck.getAttribute('username')} == null">Register</button></a>
+    <a  href="/quotes" ><button class="viewquotes" th:if="${sessionCheck.getAttribute('username')} != null">View quotes</button></a>
+
+</main>
+
+<div th:replace="footer.html"></div>
+
+</html>

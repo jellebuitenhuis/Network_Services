@@ -1,0 +1,20 @@
+.quote_tr:nth-child(even)
+{
+    background-color: #e0e0e0;
+}
+
+.quote_tr:nth-child(odd)
+{
+    background-color: #ffffff;
+}
+
+.quote_table
+{
+    border: 1px solid black;
+}
+
+.quote_table td
+{
+    border: 1px solid black;
+    text-align:center;
+}

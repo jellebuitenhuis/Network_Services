@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="quotes.css" type="text/css"/>
+    <title>Quotes</title>
+</head>
+<header th:replace="header.html"></header>
+<main>
+
+    <form action="#" th:action="@{/quotes}" th:object="${newquote}" method="post">
+        <p><label for="name">Name:</label> <input id="name" type="text" th:field="*{name}" /></p>
+        <p><label for="text">Text:</label> <input id="text" type="text" th:field="*{text}" /></p>
+        <p><button type="submit" > Submit</button><button type="reset" >Reset</button></p>
+    </form>
+
+    <table class="quote_table">
+        <tbody>
+            <tr class="header">
+                <th>Name</th>
+                <th>Text</th>
+                <th>Sender</th>
+                <th>Likes</th>
+                <th>Comments</th>
+            </tr>
+            <tr class="quote_tr" th:each="quote : ${quotes}">
+                <td th:text="${quote.name}">Name_placeholder</td>
+                <td th:text="${quote.text}">Text_placeholder</td>
+                <td th:text="${quote.user}">Sender_placeholder</td>
+                <td>
+                    <form  action="#" th:action="@{/quotes/{id}/like(id=${quote.id})}" method="post"><button th:text="${quote.getLikeAmount()} + ' likes!'" type="submit" class="quote_like"></button></form>
+                </td>
+                <td><a th:href="@{/quotes/{id}(id=${quote.id})}"><span th:text="${quote.getCommentAmount()}"></span> comments.</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+</main>
+</html>

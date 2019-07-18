@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/comments.css" type="text/css"/>
+    <title>Comments</title>
+</head>
+<header th:replace="header.html"></header>
+<main>
+
+    <form action="#" th:action="@{/quotes/{id}(id=${quote.id})}" th:object="${newcomment}" method="post">
+        <p><label for="text">Text:</label> <input id="text" type="text" th:field="*{text}" /></p>
+        <p><button type="submit" >Submit</button> <button type="reset" >Reset</button></p>
+    </form>
+
+        <a><span class="comment_amount" th:text="${quote.getCommentAmount()}"></span> comments.</a>
+        <a><span class="like_amount" th:text="${quote.getLikeAmount()}"></span> likes.</a>
+
+    <table class="comment_table">
+        <tbody>
+            <tr class="header">
+                <th>Sender</th>
+                <th>Text</th>
+            </tr>
+            <tr class="comment_tr" th:each="comment : ${comments}">
+                <td class="comment_user" th:text="${comment.user}">Sender_placeholder</td>
+                <td class="comment_text" th:text="${comment.text}">Text_placeholder</td>
+            </tr>
+        </tbody>
+    </table>
+
+</main>
+</html>

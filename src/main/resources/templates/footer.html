@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/default.css" type="text/css"/>
+    <title>Comments</title>
+</head>
+<footer>
+    <form  action="#" th:action="@{/}" method="post"><a th:if="${gdprCookie.value} == 0"><button id="acceptcookies">Accept cookies</button></a></form>
+</footer>
+</html>
